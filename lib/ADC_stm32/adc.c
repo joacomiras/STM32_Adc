@@ -18,7 +18,7 @@ void adc_init() {
     while (ADC1->CR2 & ADC_CR2_CAL);
 }
 
-unsigned int adc_read(int canal, int vMax) {
+float adc_read(int canal, int vMax) {
     // Configurar el pin correspondiente al canal como entrada analógica.
     // Esto es necesario hacerlo cada vez si se cambian de canales.
     // ! Agregar que si es el mismo canal no volver a configurarlo. !
