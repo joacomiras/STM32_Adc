@@ -24,10 +24,10 @@ float adc_read(int canal, int vMax) {
     // ! Agregar que si es el mismo canal no volver a configurarlo. !
     if (canal <= 7) { // Canales 0-7 están en el Puerto A (PA0-PA7)
         // Limpiar los 4 bits de configuración del pin correspondiente
-        GPIOA->CRL &= ~(0b1111 << (canal * 4));
+        GPIOA->CRL &= ~(0x4 << (canal * 4));
     } else if (canal <= 9) { // Canales 8-9 están en el Puerto B (PB0-PB1)
         // Limpiar los 4 bits de configuración del pin correspondiente
-        GPIOB->CRL &= ~(0b1111 << ((canal - 8) * 4));
+        GPIOB->CRL &= ~(0x4 << ((canal % 8) * 4));
     }
 
     //SQR3-> REGULAR SEQUENCE REGISTER ; ES DONDE SE ESCRIBE EL CANAL QUE QUIERO LEER
